@@ -1,0 +1,11 @@
+services:
+  study:
+    image: nginx:stable-alpine
+    ports:
+      - "81:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./data:/usr/share/nginx/html
+      - ../../react-simsy/data/certbot/conf:/etc/letsencrypt
+      - ../../react-simsy/data/certbot/www:/var/www/certbot
+    restart: always

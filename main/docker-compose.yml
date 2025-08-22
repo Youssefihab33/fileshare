@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  samba:
+    image: ghcr.io/servercontainers/samba:latest
+    container_name: fileshare-main
+    restart: always
+    environment:
+      ACCOUNT_simsy: fady2015
+      UID_simsy: 1234
+      SAMBA_VOLUME_CONFIG_Year2: |
+        [Main]
+        comment = Main simsy user home directory
+        path = /shares/location/home
+        public = yes
+        browsable = yes
+        writable = yes
+        create mask = 0644
+        directory mask = 0755
+        force user = simsy
+        write list = simsy
+    volumes:
+      - /home/simsy/:/shares/location/home
+    ports:
+      - 445:445
