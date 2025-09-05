@@ -1,6 +1,7 @@
 services:
   study:
     image: byjg/nginx-extras
+    container_name: fileshare-study
     ports:
       - "81:80"
     volumes:
